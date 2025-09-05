@@ -21,11 +21,11 @@ jobs:
         shell: pwsh
         run: |
           # Create the root package directory
-          New-Item -ItemType Directory -Path env:ROOT_PACKAGE_NAME -Force
+          New-Item -ItemType Directory -Name env:ROOT_PACKAGE_NAME -Force
           Write-Host "Created package directory: $env:ROOT_PACKAGE_NAME"
           
           # Create the layers subdirectory
-          New-Item -ItemType Directory -Path "$env:ROOT_PACKAGE_NAME\layers" -Force
+          New-Item -ItemType Directory -Path $env:ROOT_PACKAGE_NAME -Name "layers" -Force
           Write-Host "Created layers directory: $env:ROOT_PACKAGE_NAME\layers"
 
       - name: Copy manifest file
