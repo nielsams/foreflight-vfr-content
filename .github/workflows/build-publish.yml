@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  ROOT_PACKAGE_NAME: "vfr-waypoints"
+  ROOT_PACKAGE_NAME: "VFR-Waypoints"
 
 jobs:
   build-and-publish:
