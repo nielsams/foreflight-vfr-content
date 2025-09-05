@@ -89,39 +89,13 @@ jobs:
             exit 1
           }
 
-      - name: Create ZIP package
+      - name: Build zip file name
         shell: pwsh
         run: |
           # Create the ZIP file name with timestamp for uniqueness
           $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
-          $zipFileName = "$env:ROOT_PACKAGE_NAME-$timestamp.zip"
+          $zipFileName = "$env:ROOT_PACKAGE_NAME-$timestamp"
           echo "PACKAGE_FILE=$zipFileName" >> $env:GITHUB_ENV
-        #   echo "PACKAGE_NAME=output\$env:ROOT_PACKAGE_NAME" >> $env:GITHUB_ENV
-          
-        #   Write-Host "Creating ZIP package: $zipFileName"
-          
-        #   # Create the ZIP file
-        #   Compress-Archive -Path "$env:ROOT_PACKAGE_NAME\*" -DestinationPath $zipFileName -Force
-          
-          # Verify the ZIP file was created
-        #   if (Test-Path $zipFileName) {
-        #     $zipSize = (Get-Item $zipFileName).Length
-        #     Write-Host "✓ ZIP package created successfully: $zipFileName (Size: $zipSize bytes)"
-            
-        #     # Set output variable for publishing step
-
-        #   } else {
-        #     Write-Error "✗ Failed to create ZIP package"
-        #     exit 1
-        #   }
-          
-          # List package contents for verification
-        #   Write-Host "`nPackage contents:"
-        #   Get-ChildItem -Path $env:ROOT_PACKAGE_NAME -Recurse | ForEach-Object {
-        #     $relativePath = $_.FullName.Replace("$PWD\$env:ROOT_PACKAGE_NAME\", "")
-        #     Write-Host "  $relativePath"
-        #   }
-
       - name: Upload package as GitHub artifact
         uses: actions/upload-artifact@v4
         with:
