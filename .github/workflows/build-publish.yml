@@ -33,7 +33,7 @@ jobs:
         shell: pwsh
         run: |
           # Copy manifest.json from src to package root
-          Copy-Item -Path "src\manifest.json" -Destination "$env:ROOT_PACKAGE_NAME\manifest.json" -Force
+          Copy-Item -Path "src\manifest.json" -Destination "output\$env:ROOT_PACKAGE_NAME\manifest.json" -Force
           Write-Host "Copied manifest.json to package root"
 
       - name: Create merged GeoJSON file
