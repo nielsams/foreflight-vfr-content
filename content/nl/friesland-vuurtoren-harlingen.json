@@ -1,0 +1,14 @@
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Vuurtoren",
+        "description": "Vuurtoren in Harlingen"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            5.4118,
+            53.1737
+        ]
+    }
+}

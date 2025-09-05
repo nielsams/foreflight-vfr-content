@@ -1,0 +1,148 @@
+name: Build and Publish VFR Content Package
+
+on:
+  push:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+env:
+  ROOT_PACKAGE_NAME: "vfr-waypoints"
+
+jobs:
+  build-and-publish:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create package directory structure
+        shell: pwsh
+        run: |
+          # Create the root package directory
+          New-Item -ItemType Directory -Path env:ROOT_PACKAGE_NAME -Force
+          Write-Host "Created package directory: $env:ROOT_PACKAGE_NAME"
+          
+          # Create the layers subdirectory
+          New-Item -ItemType Directory -Path "$env:ROOT_PACKAGE_NAME\layers" -Force
+          Write-Host "Created layers directory: $env:ROOT_PACKAGE_NAME\layers"
+
+      - name: Copy manifest file
+        shell: pwsh
+        run: |
+          # Copy manifest.json from src to package root
+          Copy-Item -Path "src\manifest.json" -Destination "$env:ROOT_PACKAGE_NAME\manifest.json" -Force
+          Write-Host "Copied manifest.json to package root"
+
+      - name: Create merged GeoJSON file
+        shell: pwsh
+        run: |
+          # Initialize the FeatureCollection structure
+          $featureCollection = @{
+            type = "FeatureCollection"
+            features = @()
+          }
+          
+          Write-Host "Starting GeoJSON merge process..."
+          
+          # Get all JSON files from the content directory recursively
+          $jsonFiles = Get-ChildItem -Path "content" -Filter "*.json" -Recurse
+          Write-Host "Found $($jsonFiles.Count) JSON files to process"
+          
+          # Process each JSON file
+          foreach ($file in $jsonFiles) {
+            Write-Host "Processing: $($file.FullName)"
+            
+            try {
+              # Read and parse the JSON content
+              $feature = Get-Content -Path $file.FullName -Raw -Encoding UTF8 | ConvertFrom-Json
+              
+              # Validate that it's a proper GeoJSON Feature
+              if ($feature.type -eq "Feature" -and $feature.geometry -and $feature.properties) {
+                $featureCollection.features += $feature
+                Write-Host "✓ Added feature: $($feature.properties.name)"
+              } else {
+                Write-Warning "⚠ Skipping invalid GeoJSON feature in: $($file.Name)"
+              }
+            }
+            catch {
+              Write-Output"✗ Error processing $($file.Name): $($_.Exception.Message)"
+            }
+          }
+          
+          Write-Host "Total features collected: $($featureCollection.features.Count)"
+          
+          # Convert to JSON and save to the layers directory
+          $outputPath = "$env:ROOT_PACKAGE_NAME\layers\vfr-waypoints.geojson"
+          $featureCollection | ConvertTo-Json -Depth 10 | Out-File -FilePath $outputPath -Encoding UTF8
+          
+          Write-Host "✓ GeoJSON FeatureCollection saved to: $outputPath"
+          
+          # Verify the output file was created
+          if (Test-Path $outputPath) {
+            $fileSize = (Get-Item $outputPath).Length
+            Write-Host "✓ Output file created successfully (Size: $fileSize bytes)"
+          } else {
+            Write-Error "✗ Failed to create GeoJSON output file"
+            exit 1
+          }
+
+      - name: Create ZIP package
+        shell: pwsh
+        run: |
+          # Create the ZIP file name with timestamp for uniqueness
+          $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
+          $zipFileName = "$env:ROOT_PACKAGE_NAME-$timestamp.zip"
+          
+          Write-Host "Creating ZIP package: $zipFileName"
+          
+          # Create the ZIP file
+          Compress-Archive -Path "$env:ROOT_PACKAGE_NAME\*" -DestinationPath $zipFileName -Force
+          
+          # Verify the ZIP file was created
+          if (Test-Path $zipFileName) {
+            $zipSize = (Get-Item $zipFileName).Length
+            Write-Host "✓ ZIP package created successfully: $zipFileName (Size: $zipSize bytes)"
+            
+            # Set output variable for publishing step
+            echo "PACKAGE_FILE=$zipFileName" >> $env:GITHUB_ENV
+            echo "PACKAGE_NAME=$env:ROOT_PACKAGE_NAME" >> $env:GITHUB_ENV
+          } else {
+            Write-Error "✗ Failed to create ZIP package"
+            exit 1
+          }
+          
+          # List package contents for verification
+          Write-Host "`nPackage contents:"
+          Get-ChildItem -Path $env:ROOT_PACKAGE_NAME -Recurse | ForEach-Object {
+            $relativePath = $_.FullName.Replace("$PWD\$env:ROOT_PACKAGE_NAME\", "")
+            Write-Host "  $relativePath"
+          }
+
+      - name: Upload package as GitHub artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PACKAGE_NAME }}
+          path: ${{ env.PACKAGE_FILE }}
+          retention-days: 90
+
+      - name: Create GitHub Release (on main branch)
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}
+          name: VFR Waypoints Package v${{ github.run_number }}
+          body: |
+            Automated release of VFR Waypoints Package
+            
+            This package contains:
+            - `manifest.json` - Package metadata
+            - `layers/vfr-waypoints.geojson` - Merged GeoJSON FeatureCollection with all waypoints
+            
+            Generated from commit: ${{ github.sha }}
+          files: ${{ env.PACKAGE_FILE }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

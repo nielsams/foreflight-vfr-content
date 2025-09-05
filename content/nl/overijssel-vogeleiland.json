@@ -1,0 +1,14 @@
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Vogeleiland",
+        "description": "Vogeleiland in het Zwarte Meer"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            6.0059,
+            52.6458
+        ]
+    }
+}

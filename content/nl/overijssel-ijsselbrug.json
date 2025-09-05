@@ -1,0 +1,14 @@
+{
+    "type": "Feature",
+    "properties": {
+        "name": "IJsselbrug Zwolle",
+        "description": "Bridge over the IJssel, A28 highway"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            6.054,
+            52.499
+        ]
+    }
+}
