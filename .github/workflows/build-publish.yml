@@ -24,8 +24,6 @@ jobs:
         shell: pwsh
         run: |
           # Create the output directory structure
-          New-Item -ItemType Directory -Path "output" -Force
-          New-Item -ItemType Directory -Path "output\$env:ROOT_PACKAGE_NAME" -Force
           New-Item -ItemType Directory -Path "output\$env:ROOT_PACKAGE_NAME\layers" -Force
           Write-Host "Created package directory structure: output\$env:ROOT_PACKAGE_NAME\layers"
 
@@ -82,6 +80,8 @@ jobs:
       - name: Add label style to KML
         shell: pwsh
         run: |
+          # This step is needed because by default, Google Earth files do not include visible labels for placemarks.
+
           # Load and process the KML file to add label style
           $kmlPath = "output\$env:ROOT_PACKAGE_NAME\layers\vfr-waypoints.kml"
           if (Test-Path $kmlPath) {
@@ -178,11 +178,15 @@ jobs:
           tag_name: v${{ github.run_number }}
           name: VFR Waypoints Package v${{ github.run_number }}
           body: |
-            This package is released as a Foreflight Custom Content Pack. 
-            You can import it directly in foreflight by opening the following URL on your iOS device:
-            https://github.com/nielsams/foreflight-vfr-content/releases/download/v${{ github.run_number }}/${{ env.FILE_NAME }}
+            This page holds the latest release of the VFR Waypoints Package.
+            Please keep in mind that this file comes without any warranties or guarantees. You are responsible for verifying the data before use and must ensure your own flight safety.
 
-            Generated from commit: ${{ github.sha }}
+
+            The file is published as a Foreflight Custom Content Pack. 
+            You can import it directly into Foreflight by opening the following URL on your iOS device:
+            https://github.com/nielsams/foreflight-vfr-content/releases/download/v${{ github.run_number }}/${{ env.FILE_NAME }}.zip
+
+
           files: ${{ env.ZIP_FILE_NAME }}
           draft: false
           prerelease: false
