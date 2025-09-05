@@ -56,7 +56,7 @@ jobs:
             [xml]$kml = Get-Content -Path $kmlPath
             
             # Find the Document node
-            $documentNode = $kml.SelectSingleNode("//Document")
+            $documentNode = $kml.SelectSingleNode("//*[local-name()='Document']")
             if ($documentNode) {
               # Get all child nodes that are NOT Placemark or Name
               $nodesToRemove = $documentNode.ChildNodes | Where-Object { 
@@ -88,7 +88,7 @@ jobs:
             [xml]$kml = Get-Content -Path $kmlPath
             
             # Find the Document node
-            $documentNode = $kml.SelectSingleNode("//Document")
+            $documentNode = $kml.SelectSingleNode("//*[local-name()='Document']")
             if ($documentNode) {
               # Create the Style element
               $styleElement = $kml.CreateElement("Style")
@@ -111,7 +111,7 @@ jobs:
               $styleElement.AppendChild($iconStyle)
               
               # Insert Style as first child after Name (if exists)
-              $nameNode = $documentNode.SelectSingleNode("Name")
+              $nameNode = $documentNode.SelectSingleNode("*[local-name()='Name']")
               if ($nameNode) {
                 $documentNode.InsertAfter($styleElement, $nameNode)
               } else {
@@ -119,10 +119,10 @@ jobs:
               }
               
               # Update all Placemark nodes to use the new style
-              $placemarks = $documentNode.SelectNodes("Placemark")
+              $placemarks = $documentNode.SelectNodes("*[local-name()='Placemark']")
               foreach ($placemark in $placemarks) {
                 # Remove existing styleUrl if present
-                $existingStyleUrl = $placemark.SelectSingleNode("styleUrl")
+                $existingStyleUrl = $placemark.SelectSingleNode("*[local-name()='styleUrl']")
                 if ($existingStyleUrl) {
                   $placemark.RemoveChild($existingStyleUrl) | Out-Null
                 }
