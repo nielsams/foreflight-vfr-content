@@ -27,7 +27,7 @@ jobs:
           
           # Create the layers subdirectory
           New-Item -ItemType Directory -Path "output\$env:ROOT_PACKAGE_NAME" -Name "layers" -Force
-          Write-Host "Created layers directory: "output\$env:ROOT_PACKAGE_NAME\layers"
+          Write-Host "Created layers directory: output\$env:ROOT_PACKAGE_NAME\layers"
 
       - name: Copy manifest file
         shell: pwsh
