@@ -20,13 +20,14 @@ jobs:
       - name: Create package directory structure
         shell: pwsh
         run: |
-          # Create the root package directory
-          New-Item -ItemType Directory -Name env:ROOT_PACKAGE_NAME -Force
-          Write-Host "Created package directory: $env:ROOT_PACKAGE_NAME"
+          #   # Create the root package directory
+          #   New-Item -ItemType Directory -Name output -Force
+          #   New-Item -ItemType Directory -Path output -Name env:ROOT_PACKAGE_NAME -Force
+          #   Write-Host "Created package directory: $env:ROOT_PACKAGE_NAME"
           
           # Create the layers subdirectory
-          New-Item -ItemType Directory -Path $env:ROOT_PACKAGE_NAME -Name "layers" -Force
-          Write-Host "Created layers directory: $env:ROOT_PACKAGE_NAME\layers"
+          New-Item -ItemType Directory -Path "output\$env:ROOT_PACKAGE_NAME" -Name "layers" -Force
+          Write-Host "Created layers directory: "output\$env:ROOT_PACKAGE_NAME\layers"
 
       - name: Copy manifest file
         shell: pwsh
@@ -74,7 +75,7 @@ jobs:
           Write-Host "Total features collected: $($featureCollection.features.Count)"
           
           # Convert to JSON and save to the layers directory
-          $outputPath = "$env:ROOT_PACKAGE_NAME\layers\vfr-waypoints.geojson"
+          $outputPath = "output\$env:ROOT_PACKAGE_NAME\layers\vfr-waypoints.geojson"
           $featureCollection | ConvertTo-Json -Depth 10 | Out-File -FilePath $outputPath -Encoding UTF8
           
           Write-Host "✓ GeoJSON FeatureCollection saved to: $outputPath"
@@ -95,7 +96,7 @@ jobs:
           $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
           $zipFileName = "$env:ROOT_PACKAGE_NAME-$timestamp.zip"
           echo "PACKAGE_FILE=$zipFileName" >> $env:GITHUB_ENV
-          echo "PACKAGE_NAME=$env:ROOT_PACKAGE_NAME" >> $env:GITHUB_ENV
+        #   echo "PACKAGE_NAME=output\$env:ROOT_PACKAGE_NAME" >> $env:GITHUB_ENV
           
         #   Write-Host "Creating ZIP package: $zipFileName"
           
@@ -125,7 +126,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.PACKAGE_FILE }}
-          path: ${{ env.PACKAGE_NAME }}
+          path: 'output'
           retention-days: 90
 
       - name: Create GitHub Release (on main branch)
