@@ -98,7 +98,7 @@ jobs:
           $zipFileName = "$filename.zip"
           
           # Create the ZIP file
-          Compress-Archive -Path "output\$env:ROOT_PACKAGE_NAME\*" -DestinationPath $zipFileName -Force
+          Compress-Archive -Path "output\*" -DestinationPath $zipFileName -Force
           
           # Verify ZIP was created
           if (Test-Path $zipFileName) {
