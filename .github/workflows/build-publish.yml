@@ -178,7 +178,9 @@ jobs:
           tag_name: v${{ github.run_number }}
           name: VFR Waypoints Package v${{ github.run_number }}
           body: |
-            Automated release of VFR Waypoints Package
+            This package is released as a Foreflight Custom Content Pack. 
+            You can import it directly in foreflight by opening the following URL on your iOS device:
+            https://github.com/nielsams/foreflight-vfr-content/releases/download/v${{ github.run_number }}/${{ env.FILE_NAME }}
 
             Generated from commit: ${{ github.sha }}
           files: ${{ env.ZIP_FILE_NAME }}
