@@ -36,6 +36,17 @@ jobs:
           Copy-Item -Path "src\manifest.json" -Destination "output\$env:ROOT_PACKAGE_NAME\manifest.json" -Force
           Write-Host "Copied manifest.json to package root"
 
+          # Update manifest version using the GitHub run number
+          $manifestPath = "output\$env:ROOT_PACKAGE_NAME\manifest.json"
+          $manifest = Get-Content -Path $manifestPath | ConvertFrom-Json
+  
+          # Update the version using github.run_number
+          $manifest.version = ${{ github.run_number }}
+  
+          # Save the updated manifest
+          $manifest | ConvertTo-Json -Depth 10 | Out-File -FilePath $manifestPath -Force
+          Write-Host "Updated manifest.json with version: ${{ github.run_number }}"
+
       - name: Create merged GeoJSON file
         shell: pwsh
         run: |
