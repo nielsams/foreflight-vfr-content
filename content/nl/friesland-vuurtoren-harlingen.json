@@ -2,6 +2,7 @@
     "type": "Feature",
     "properties": {
         "name": "Vuurtoren",
+        "featureclass": "Building",
         "description": "Vuurtoren in Harlingen"
     },
     "geometry": {

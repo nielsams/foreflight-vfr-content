@@ -2,5 +2,17 @@
 	"name": "VFR Waypoints",
 	"abbreviation": "vfrwp.v1",
 	"version": 1.0,
-	"organizationName": "Niels Buit"
+	"organizationName": "Niels Buit",
+	"resources": [
+		{
+			"featureclass": "building",
+			"styleSelectors": [
+				{
+				"featureclass": "Building",
+				"iconName": "building",
+				"iconTintColor": "#6899d4"
+				}
+			]
+		}
+	]
 }
