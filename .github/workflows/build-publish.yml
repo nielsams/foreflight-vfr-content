@@ -181,7 +181,7 @@ jobs:
             Automated release of VFR Waypoints Package
 
             Generated from commit: ${{ github.sha }}
-          files: output #${{ env.ZIP_FILE_NAME }}
+          files: ${{ env.ZIP_FILE_NAME }}
           draft: false
           prerelease: false
         env:
