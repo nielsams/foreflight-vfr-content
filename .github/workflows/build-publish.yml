@@ -33,8 +33,8 @@ jobs:
         shell: pwsh
         run: |
           # Copy manifest.json from src to package root
-          Copy-Item -Path "src\manifest.json" -Destination "output\$env:ROOT_PACKAGE_NAME\manifest.json" -Force
-          Write-Host "Copied manifest.json to package root"
+          Copy-Item -Recurse -Path "src\*" -Destination "output\$env:ROOT_PACKAGE_NAME" -Force
+          Write-Host "Copied src files to package root"
 
           # Update manifest version using the GitHub run number
           $manifestPath = "output\$env:ROOT_PACKAGE_NAME\manifest.json"

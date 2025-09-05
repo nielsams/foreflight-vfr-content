@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>VFR Waypoints</name>
+	<StyleMap id="__managed_style_0B7CC2E1303A4F18BCEB">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1FC0B5D1223A4F18BCEB</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_279BDF21F73A4F18BCEB</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_196721D5043A4F17A451">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>3.2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<gx:displayMode>card</gx:displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_279BDF21F73A4F18BCEB">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/card_template.kml#main</styleUrl>
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4.8</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_1FC0B5D1223A4F18BCEB">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/card_template.kml#main</styleUrl>
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>3.2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_2905A115CB3A4F17A451">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4.8</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<gx:displayMode>card</gx:displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0E440F608B3A4F17A451">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_196721D5043A4F17A451</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2905A115CB3A4F17A451</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_20B49F5B493A4F142C54">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/none_template.kml#main</styleUrl>
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4.8</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_1DA81912113A4F142C54">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/none_template.kml#main</styleUrl>
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>3.2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0580F8E13E3A4F142C54">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1DA81912113A4F142C54</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_20B49F5B493A4F142C54</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="0400BDE76F3A4F142C46">
+		<name>Vogeleiland</name>
+		<LookAt>
+			<longitude>6.012386119971893</longitude>
+			<latitude>52.64671648177281</latitude>
+			<altitude>1.150093709860271</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>2596.202078967181</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0580F8E13E3A4F142C54</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						5.999217142499993,52.64718066638189,0 5.99943756215636,52.64578721001204,0 6.002843920536844,52.64419820985079,0 6.003569771722741,52.64339152548012,0 6.005364333978718,52.64373434033033,0 6.006550938096642,52.64319585628688,0 6.008646624271958,52.64231601259145,0 6.011285810295321,52.64279224257214,0 6.012071407142336,52.64416185484119,0 6.011044039382512,52.64614235311763,0 6.010560429083585,52.64685114442602,0 6.009653773670298,52.64757235771686,0 6.008303846373273,52.64791461409718,0 6.005198822709248,52.64862483233072,0 6.002418203157416,52.64883213614659,0 5.999858719896343,52.64834285202384,0 5.999217142499993,52.64718066638189,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="0099ECB48A3A4F17A44F">
+		<name>Harlingen Lighthouse</name>
+		<gx:mid>/m/0vpsxqx</gx:mid>
+		<gx:fid>0x47c8ddd0824c9b8d:0x791fe80b292c2c70</gx:fid>
+		<LookAt>
+			<longitude>5.4118606</longitude>
+			<latitude>53.173793</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>602.8664440629891</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0E440F608B3A4F17A451</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>5.4118604,53.17379509999999,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0384B8849B3A4F1870F7">
+		<name>Ijsselbrug</name>
+		<description><![CDATA[<div>Spoorbrug over de IJssel</div>]]></description>
+		<LookAt>
+			<longitude>6.057938981567473</longitude>
+			<latitude>52.49653608276851</latitude>
+			<altitude>-1.00567166637149</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>710.2555136607408</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0B7CC2E1303A4F18BCEB</styleUrl>
+		<LineString>
+			<coordinates>
+				6.056851179689358,52.49665989473903,0 6.058574510848733,52.49725208682139,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="0AC00F669B3A4F1982EE">
+		<name>Pampus</name>
+		<description><![CDATA[<div>Fort Pampus</div>]]></description>
+		<LookAt>
+			<longitude>5.069397188462954</longitude>
+			<latitude>52.36472062516994</latitude>
+			<altitude>0.4950432842151575</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>625.5762471102207</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0B7CC2E1303A4F18BCEB</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						5.067843894836052,52.36529529843128,0 5.067645960865579,52.36510280199492,0 5.06751401034337,52.36487001666166,0 5.067620322590836,52.36460589888134,0 5.067836596510888,52.36437535696913,0 5.068140839069295,52.36421420322858,0 5.069211165235552,52.36405305242767,0 5.069782982503128,52.36417615842109,0 5.070222844708148,52.36438431826382,0 5.070402460827745,52.36468872519553,0 5.07040613397681,52.36498194169604,0 5.070112894006424,52.36526620828029,0 5.069775660850664,52.36541841383622,0 5.068408390367651,52.36557061538409,0 5.068170127856191,52.36547884299873,0 5.067843894836052,52.36529529843128,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>
