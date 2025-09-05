@@ -2,119 +2,14 @@
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
 	<name>VFR Waypoints</name>
-	<gx:CascadingStyle kml:id="__managed_style_1E4D6ACDE93A4F2333C0">
-		<Style>
-			<IconStyle>
-				<scale>1.5</scale>
-				<Icon>
-					<href>https://earth.google.com/earth/document/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
-				</Icon>
-				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
-			</IconStyle>
-			<LabelStyle>
-			</LabelStyle>
-			<LineStyle>
-				<color>ff2dc0fb</color>
-				<width>3.2</width>
-			</LineStyle>
-			<PolyStyle>
-				<color>40ffffff</color>
-			</PolyStyle>
-			<BalloonStyle>
-				<gx:displayMode>card</gx:displayMode>
-			</BalloonStyle>
-		</Style>
-	</gx:CascadingStyle>
-	<StyleMap id="__managed_style_0ABFC0982C3A4F2333C0">
-		<Pair>
-			<key>normal</key>
-			<styleUrl>#__managed_style_1E4D6ACDE93A4F2333C0</styleUrl>
-		</Pair>
-		<Pair>
-			<key>highlight</key>
-			<styleUrl>#__managed_style_2464FA888E3A4F2333C0</styleUrl>
-		</Pair>
-	</StyleMap>
-	<gx:CascadingStyle kml:id="__managed_style_095B14093C3A4F22EEFE">
-		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/simple_template.kml#main</styleUrl>
-		<Style>
-			<IconStyle>
-				<scale>1.2</scale>
-				<Icon>
-					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
-				</Icon>
-				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
-			</IconStyle>
-			<LabelStyle>
-			</LabelStyle>
-			<LineStyle>
-				<color>ff2dc0fb</color>
-				<width>4.8</width>
-			</LineStyle>
-			<PolyStyle>
-				<color>40ffffff</color>
-			</PolyStyle>
-			<BalloonStyle>
-				<gx:displayMode>panel</gx:displayMode>
-			</BalloonStyle>
-		</Style>
-	</gx:CascadingStyle>
-	<gx:CascadingStyle kml:id="__managed_style_166F3FC0E23A4F22EEFC">
-		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/simple_template.kml#main</styleUrl>
-		<Style>
-			<IconStyle>
-				<Icon>
-					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
-				</Icon>
-				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
-			</IconStyle>
-			<LabelStyle>
-			</LabelStyle>
-			<LineStyle>
-				<color>ff2dc0fb</color>
-				<width>3.2</width>
-			</LineStyle>
-			<PolyStyle>
-				<color>40ffffff</color>
-			</PolyStyle>
-			<BalloonStyle>
-				<gx:displayMode>panel</gx:displayMode>
-			</BalloonStyle>
-		</Style>
-	</gx:CascadingStyle>
-	<gx:CascadingStyle kml:id="__managed_style_2464FA888E3A4F2333C0">
-		<Style>
-			<IconStyle>
-				<scale>1.8</scale>
-				<Icon>
-					<href>https://earth.google.com/earth/document/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
-				</Icon>
-				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
-			</IconStyle>
-			<LabelStyle>
-			</LabelStyle>
-			<LineStyle>
-				<color>ff2dc0fb</color>
-				<width>4.8</width>
-			</LineStyle>
-			<PolyStyle>
-				<color>40ffffff</color>
-			</PolyStyle>
-			<BalloonStyle>
-				<gx:displayMode>card</gx:displayMode>
-			</BalloonStyle>
-		</Style>
-	</gx:CascadingStyle>
-	<StyleMap id="__managed_style_031DEDE9353A4F22EEFC">
-		<Pair>
-			<key>normal</key>
-			<styleUrl>#__managed_style_166F3FC0E23A4F22EEFC</styleUrl>
-		</Pair>
-		<Pair>
-			<key>highlight</key>
-			<styleUrl>#__managed_style_095B14093C3A4F22EEFE</styleUrl>
-		</Pair>
-	</StyleMap>
+	<Style id="showLabels">
+		<LabelStyle>
+			<scale>1</scale>
+		</LabelStyle>
+		<IconStyle>
+			<scale>0.6</scale>
+		</IconStyle>
+	</Style>
 	<Placemark id="0400BDE76F3A4F142C46">
 		<name>Vogeleiland</name>
 		<LookAt>
@@ -127,7 +22,7 @@
 			<range>2596.202078967181</range>
 			<altitudeMode>absolute</altitudeMode>
 		</LookAt>
-		<styleUrl>#__managed_style_031DEDE9353A4F22EEFC</styleUrl>
+		<styleUrl>#showLabels</styleUrl>
 		<Polygon>
 			<outerBoundaryIs>
 				<LinearRing>
@@ -138,28 +33,8 @@
 			</outerBoundaryIs>
 		</Polygon>
 	</Placemark>
-	<Placemark id="0099ECB48A3A4F17A44F">
-		<name>Harlingen Lighthouse</name>
-		<gx:mid>/m/0vpsxqx</gx:mid>
-		<gx:fid>0x47c8ddd0824c9b8d:0x791fe80b292c2c70</gx:fid>
-		<LookAt>
-			<longitude>5.4118606</longitude>
-			<latitude>53.173793</latitude>
-			<altitude>0</altitude>
-			<heading>0</heading>
-			<tilt>0</tilt>
-			<gx:fovy>35</gx:fovy>
-			<range>602.8664440629891</range>
-			<altitudeMode>relativeToGround</altitudeMode>
-		</LookAt>
-		<styleUrl>#__managed_style_0ABFC0982C3A4F2333C0</styleUrl>
-		<Point>
-			<altitudeMode>relativeToGround</altitudeMode>
-			<coordinates>5.4118604,53.17379509999999,0</coordinates>
-		</Point>
-	</Placemark>
 	<Placemark id="0384B8849B3A4F1870F7">
-		<name>Ijsselbrug</name>
+		<name>Ijsselbrug-line</name>
 		<description><![CDATA[<div>Spoorbrug over de IJssel<br></div>]]></description>
 		<LookAt>
 			<longitude>6.057938981567473</longitude>
@@ -171,7 +46,7 @@
 			<range>710.2555136607408</range>
 			<altitudeMode>absolute</altitudeMode>
 		</LookAt>
-		<styleUrl>#__managed_style_031DEDE9353A4F22EEFC</styleUrl>
+		<styleUrl>#showLabels</styleUrl>
 		<LineString>
 			<coordinates>
 				6.056851179689358,52.49665989473903,0 6.058574510848733,52.49725208682139,0 
@@ -179,7 +54,7 @@
 		</LineString>
 	</Placemark>
 	<Placemark id="0AC00F669B3A4F1982EE">
-		<name>Pampus</name>
+		<name>PampusPoly</name>
 		<description><![CDATA[<div>Fort Pampus<br></div>]]></description>
 		<LookAt>
 			<longitude>5.069397188462954</longitude>
@@ -191,7 +66,7 @@
 			<range>625.5762471102207</range>
 			<altitudeMode>absolute</altitudeMode>
 		</LookAt>
-		<styleUrl>#__managed_style_031DEDE9353A4F22EEFC</styleUrl>
+		<styleUrl>#showLabels</styleUrl>
 		<Polygon>
 			<outerBoundaryIs>
 				<LinearRing>
@@ -201,6 +76,57 @@
 				</LinearRing>
 			</outerBoundaryIs>
 		</Polygon>
+	</Placemark>
+	<Placemark id="088F8FF9073A4F3A0AA8">
+		<name>Fort Pampus</name>
+		<LookAt>
+			<longitude>5.070899602037344</longitude>
+			<latitude>52.36498745544961</latitude>
+			<altitude>0.4950036089861753</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>780.0989379266684</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#showLabels</styleUrl>
+		<Point>
+			<coordinates>5.068958084910316,52.36476344742811,0.4951115310978427</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="024D4631D53A4F3AECB7">
+		<name>IJsselbrug</name>
+		<LookAt>
+			<longitude>6.05793897526995</longitude>
+			<latitude>52.49653608199771</latitude>
+			<altitude>-1.005671664956842</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>710.5380949521351</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#showLabels</styleUrl>
+		<Point>
+			<coordinates>6.057767342801053,52.49698595381667,10.03981783273345</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0F47FCC29E3A4F3BBE9F">
+		<name>Vuurtoren</name>
+		<LookAt>
+			<longitude>5.411777428744237</longitude>
+			<latitude>53.17393659750608</latitude>
+			<altitude>2.949459150952234</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>190.344910628537</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#showLabels</styleUrl>
+		<Point>
+			<coordinates>5.411846973411523,53.17377989822985,3.085826124215862</coordinates>
+		</Point>
 	</Placemark>
 </Document>
 </kml>

@@ -29,7 +29,7 @@ jobs:
           New-Item -ItemType Directory -Path "output\$env:ROOT_PACKAGE_NAME\layers" -Force
           Write-Host "Created package directory structure: output\$env:ROOT_PACKAGE_NAME\layers"
 
-      - name: Copy manifest file
+      - name: Copy source files
         shell: pwsh
         run: |
           # Copy manifest.json from src to package root
@@ -47,57 +47,100 @@ jobs:
           $manifest | ConvertTo-Json -Depth 10 | Out-File -FilePath $manifestPath -Force
           Write-Host "Updated manifest.json with version: ${{ github.run_number }}"
 
-      - name: Create merged GeoJSON file
+      - name: Cleanup KML file
         shell: pwsh
         run: |
-          # Initialize the FeatureCollection structure
-          $featureCollection = @{
-            type = "FeatureCollection"
-            features = @()
-          }
-          
-          Write-Host "Starting GeoJSON merge process..."
-          
-          # Get all JSON files from the content directory recursively
-          $jsonFiles = Get-ChildItem -Path "content" -Filter "*.json" -Recurse
-          Write-Host "Found $($jsonFiles.Count) JSON files to process"
-          
-          # Process each JSON file
-          foreach ($file in $jsonFiles) {
-            Write-Host "Processing: $($file.FullName)"
+          # Load and process the KML file
+          $kmlPath = "output\$env:ROOT_PACKAGE_NAME\layers\vfr-waypoints.kml"
+          if (Test-Path $kmlPath) {
+            [xml]$kml = Get-Content -Path $kmlPath
             
-            try {
-              # Read and parse the JSON content
-              $feature = Get-Content -Path $file.FullName -Raw -Encoding UTF8 | ConvertFrom-Json
-              
-              # Validate that it's a proper GeoJSON Feature
-              if ($feature.type -eq "Feature" -and $feature.geometry -and $feature.properties) {
-                $featureCollection.features += $feature
-                Write-Host "✓ Added feature: $($feature.properties.name)"
-              } else {
-                Write-Warning "⚠ Skipping invalid GeoJSON feature in: $($file.Name)"
+            # Find the Document node
+            $documentNode = $kml.SelectSingleNode("//Document")
+            if ($documentNode) {
+              # Get all child nodes that are NOT Placemark or Name
+              $nodesToRemove = $documentNode.ChildNodes | Where-Object { 
+                $_.NodeType -eq [System.Xml.XmlNodeType]::Element -and 
+                $_.LocalName -notin @("Placemark", "Name") 
               }
+              
+              # Remove the unwanted nodes
+              foreach ($node in $nodesToRemove) {
+                $documentNode.RemoveChild($node) | Out-Null
+              }
+              
+              # Save the updated KML file
+              $kml.Save($kmlPath)
+              Write-Host "Updated KML file - removed non-Placemark/Name children from Document node"
+            } else {
+              Write-Warning "Document node not found in KML file"
             }
-            catch {
-              Write-Output "✗ Error processing $($file.Name): $($_.Exception.Message)"
-            }
-          }
-          
-          Write-Host "Total features collected: $($featureCollection.features.Count)"
-          
-          # Convert to JSON and save to the layers directory
-          $outputPath = "output\$env:ROOT_PACKAGE_NAME\layers\vfr-waypoints.geojson"
-          $featureCollection | ConvertTo-Json -Depth 10 | Out-File -FilePath $outputPath -Encoding UTF8
-          
-          Write-Host "✓ GeoJSON FeatureCollection saved to: $outputPath"
-          
-          # Verify the output file was created
-          if (Test-Path $outputPath) {
-            $fileSize = (Get-Item $outputPath).Length
-            Write-Host "✓ Output file created successfully (Size: $fileSize bytes)"
           } else {
-            Write-Error "✗ Failed to create GeoJSON output file"
-            exit 1
+            Write-Warning "KML file not found at: $kmlPath"
+          }
+
+      - name: Add label style to KML
+        shell: pwsh
+        run: |
+          # Load and process the KML file to add label style
+          $kmlPath = "output\$env:ROOT_PACKAGE_NAME\layers\vfr-waypoints.kml"
+          if (Test-Path $kmlPath) {
+            [xml]$kml = Get-Content -Path $kmlPath
+            
+            # Find the Document node
+            $documentNode = $kml.SelectSingleNode("//Document")
+            if ($documentNode) {
+              # Create the Style element
+              $styleElement = $kml.CreateElement("Style")
+              $styleElement.SetAttribute("id", "defaultWaypointStyle")
+              
+              # Create LabelStyle
+              $labelStyle = $kml.CreateElement("LabelStyle")
+              $scaleLabel = $kml.CreateElement("scale")
+              $scaleLabel.InnerText = "1"
+              $labelStyle.AppendChild($scaleLabel)
+              
+              # Create IconStyle
+              $iconStyle = $kml.CreateElement("IconStyle")
+              $scaleIcon = $kml.CreateElement("scale")
+              $scaleIcon.InnerText = "0.6"
+              $iconStyle.AppendChild($scaleIcon)
+              
+              # Append styles to Style element
+              $styleElement.AppendChild($labelStyle)
+              $styleElement.AppendChild($iconStyle)
+              
+              # Insert Style as first child after Name (if exists)
+              $nameNode = $documentNode.SelectSingleNode("Name")
+              if ($nameNode) {
+                $documentNode.InsertAfter($styleElement, $nameNode)
+              } else {
+                $documentNode.PrependChild($styleElement)
+              }
+              
+              # Update all Placemark nodes to use the new style
+              $placemarks = $documentNode.SelectNodes("Placemark")
+              foreach ($placemark in $placemarks) {
+                # Remove existing styleUrl if present
+                $existingStyleUrl = $placemark.SelectSingleNode("styleUrl")
+                if ($existingStyleUrl) {
+                  $placemark.RemoveChild($existingStyleUrl) | Out-Null
+                }
+                
+                # Add new styleUrl
+                $styleUrl = $kml.CreateElement("styleUrl")
+                $styleUrl.InnerText = "#defaultWaypointStyle"
+                $placemark.AppendChild($styleUrl)
+              }
+              
+              # Save the updated KML file
+              $kml.Save($kmlPath)
+              Write-Host "Added defaultWaypointStyle and updated $($placemarks.Count) Placemark styleUrl references"
+            } else {
+              Write-Warning "Document node not found in KML file"
+            }
+          } else {
+            Write-Warning "KML file not found at: $kmlPath"
           }
 
       - name: Create ZIP package
@@ -142,7 +185,7 @@ jobs:
             - `layers/vfr-waypoints.geojson` - Merged GeoJSON FeatureCollection with all waypoints
             
             Generated from commit: ${{ github.sha }}
-          files: ${{ env.ZIP_FILE_NAME }}
+          files: output/* #${{ env.ZIP_FILE_NAME }}
           draft: false
           prerelease: false
         env:
