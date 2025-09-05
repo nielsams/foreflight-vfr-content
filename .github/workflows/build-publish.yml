@@ -187,6 +187,7 @@ jobs:
             You can import it directly into Foreflight by opening the following URL on your iOS device:
             https://foreflight.com/content?downloadURL=https://github.com/nielsams/foreflight-vfr-content/releases/download/v${{ github.run_number }}/${{ env.FILE_NAME }}.zip
 
+            The file will be queued for downloading. Once it completes, it will appear in the Custom Content section of ForeFlight. You can enable it from the map layer view.
 
           files: ${{ env.ZIP_FILE_NAME }}
           draft: false
