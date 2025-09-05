@@ -2,19 +2,10 @@
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
 	<name>VFR Waypoints</name>
-	<StyleMap id="__managed_style_0B7CC2E1303A4F18BCEB">
-		<Pair>
-			<key>normal</key>
-			<styleUrl>#__managed_style_1FC0B5D1223A4F18BCEB</styleUrl>
-		</Pair>
-		<Pair>
-			<key>highlight</key>
-			<styleUrl>#__managed_style_279BDF21F73A4F18BCEB</styleUrl>
-		</Pair>
-	</StyleMap>
-	<gx:CascadingStyle kml:id="__managed_style_196721D5043A4F17A451">
+	<gx:CascadingStyle kml:id="__managed_style_1E4D6ACDE93A4F2333C0">
 		<Style>
 			<IconStyle>
+				<scale>1.5</scale>
 				<Icon>
 					<href>https://earth.google.com/earth/document/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
 				</Icon>
@@ -34,8 +25,18 @@
 			</BalloonStyle>
 		</Style>
 	</gx:CascadingStyle>
-	<gx:CascadingStyle kml:id="__managed_style_279BDF21F73A4F18BCEB">
-		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/card_template.kml#main</styleUrl>
+	<StyleMap id="__managed_style_0ABFC0982C3A4F2333C0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1E4D6ACDE93A4F2333C0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2464FA888E3A4F2333C0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_095B14093C3A4F22EEFE">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/simple_template.kml#main</styleUrl>
 		<Style>
 			<IconStyle>
 				<scale>1.2</scale>
@@ -54,11 +55,12 @@
 				<color>40ffffff</color>
 			</PolyStyle>
 			<BalloonStyle>
+				<gx:displayMode>panel</gx:displayMode>
 			</BalloonStyle>
 		</Style>
 	</gx:CascadingStyle>
-	<gx:CascadingStyle kml:id="__managed_style_1FC0B5D1223A4F18BCEB">
-		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/card_template.kml#main</styleUrl>
+	<gx:CascadingStyle kml:id="__managed_style_166F3FC0E23A4F22EEFC">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/simple_template.kml#main</styleUrl>
 		<Style>
 			<IconStyle>
 				<Icon>
@@ -76,13 +78,14 @@
 				<color>40ffffff</color>
 			</PolyStyle>
 			<BalloonStyle>
+				<gx:displayMode>panel</gx:displayMode>
 			</BalloonStyle>
 		</Style>
 	</gx:CascadingStyle>
-	<gx:CascadingStyle kml:id="__managed_style_2905A115CB3A4F17A451">
+	<gx:CascadingStyle kml:id="__managed_style_2464FA888E3A4F2333C0">
 		<Style>
 			<IconStyle>
-				<scale>1.2</scale>
+				<scale>1.8</scale>
 				<Icon>
 					<href>https://earth.google.com/earth/document/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
 				</Icon>
@@ -102,71 +105,14 @@
 			</BalloonStyle>
 		</Style>
 	</gx:CascadingStyle>
-	<StyleMap id="__managed_style_0E440F608B3A4F17A451">
+	<StyleMap id="__managed_style_031DEDE9353A4F22EEFC">
 		<Pair>
 			<key>normal</key>
-			<styleUrl>#__managed_style_196721D5043A4F17A451</styleUrl>
+			<styleUrl>#__managed_style_166F3FC0E23A4F22EEFC</styleUrl>
 		</Pair>
 		<Pair>
 			<key>highlight</key>
-			<styleUrl>#__managed_style_2905A115CB3A4F17A451</styleUrl>
-		</Pair>
-	</StyleMap>
-	<gx:CascadingStyle kml:id="__managed_style_20B49F5B493A4F142C54">
-		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/none_template.kml#main</styleUrl>
-		<Style>
-			<IconStyle>
-				<scale>1.2</scale>
-				<Icon>
-					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
-				</Icon>
-				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
-			</IconStyle>
-			<LabelStyle>
-			</LabelStyle>
-			<LineStyle>
-				<color>ff2dc0fb</color>
-				<width>4.8</width>
-			</LineStyle>
-			<PolyStyle>
-				<color>40ffffff</color>
-			</PolyStyle>
-			<BalloonStyle>
-				<displayMode>hide</displayMode>
-			</BalloonStyle>
-		</Style>
-	</gx:CascadingStyle>
-	<gx:CascadingStyle kml:id="__managed_style_1DA81912113A4F142C54">
-		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/none_template.kml#main</styleUrl>
-		<Style>
-			<IconStyle>
-				<Icon>
-					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
-				</Icon>
-				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
-			</IconStyle>
-			<LabelStyle>
-			</LabelStyle>
-			<LineStyle>
-				<color>ff2dc0fb</color>
-				<width>3.2</width>
-			</LineStyle>
-			<PolyStyle>
-				<color>40ffffff</color>
-			</PolyStyle>
-			<BalloonStyle>
-				<displayMode>hide</displayMode>
-			</BalloonStyle>
-		</Style>
-	</gx:CascadingStyle>
-	<StyleMap id="__managed_style_0580F8E13E3A4F142C54">
-		<Pair>
-			<key>normal</key>
-			<styleUrl>#__managed_style_1DA81912113A4F142C54</styleUrl>
-		</Pair>
-		<Pair>
-			<key>highlight</key>
-			<styleUrl>#__managed_style_20B49F5B493A4F142C54</styleUrl>
+			<styleUrl>#__managed_style_095B14093C3A4F22EEFE</styleUrl>
 		</Pair>
 	</StyleMap>
 	<Placemark id="0400BDE76F3A4F142C46">
@@ -181,7 +127,7 @@
 			<range>2596.202078967181</range>
 			<altitudeMode>absolute</altitudeMode>
 		</LookAt>
-		<styleUrl>#__managed_style_0580F8E13E3A4F142C54</styleUrl>
+		<styleUrl>#__managed_style_031DEDE9353A4F22EEFC</styleUrl>
 		<Polygon>
 			<outerBoundaryIs>
 				<LinearRing>
@@ -206,7 +152,7 @@
 			<range>602.8664440629891</range>
 			<altitudeMode>relativeToGround</altitudeMode>
 		</LookAt>
-		<styleUrl>#__managed_style_0E440F608B3A4F17A451</styleUrl>
+		<styleUrl>#__managed_style_0ABFC0982C3A4F2333C0</styleUrl>
 		<Point>
 			<altitudeMode>relativeToGround</altitudeMode>
 			<coordinates>5.4118604,53.17379509999999,0</coordinates>
@@ -214,7 +160,7 @@
 	</Placemark>
 	<Placemark id="0384B8849B3A4F1870F7">
 		<name>Ijsselbrug</name>
-		<description><![CDATA[<div>Spoorbrug over de IJssel</div>]]></description>
+		<description><![CDATA[<div>Spoorbrug over de IJssel<br></div>]]></description>
 		<LookAt>
 			<longitude>6.057938981567473</longitude>
 			<latitude>52.49653608276851</latitude>
@@ -225,7 +171,7 @@
 			<range>710.2555136607408</range>
 			<altitudeMode>absolute</altitudeMode>
 		</LookAt>
-		<styleUrl>#__managed_style_0B7CC2E1303A4F18BCEB</styleUrl>
+		<styleUrl>#__managed_style_031DEDE9353A4F22EEFC</styleUrl>
 		<LineString>
 			<coordinates>
 				6.056851179689358,52.49665989473903,0 6.058574510848733,52.49725208682139,0 
@@ -234,7 +180,7 @@
 	</Placemark>
 	<Placemark id="0AC00F669B3A4F1982EE">
 		<name>Pampus</name>
-		<description><![CDATA[<div>Fort Pampus</div>]]></description>
+		<description><![CDATA[<div>Fort Pampus<br></div>]]></description>
 		<LookAt>
 			<longitude>5.069397188462954</longitude>
 			<latitude>52.36472062516994</latitude>
@@ -245,7 +191,7 @@
 			<range>625.5762471102207</range>
 			<altitudeMode>absolute</altitudeMode>
 		</LookAt>
-		<styleUrl>#__managed_style_0B7CC2E1303A4F18BCEB</styleUrl>
+		<styleUrl>#__managed_style_031DEDE9353A4F22EEFC</styleUrl>
 		<Polygon>
 			<outerBoundaryIs>
 				<LinearRing>
